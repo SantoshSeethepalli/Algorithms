@@ -4,6 +4,7 @@ public class SegmentTreeNode {
 
     int l, r;
     int sum;
+    int lazy;
 
     SegmentTreeNode leftChild;
     SegmentTreeNode rightChild;

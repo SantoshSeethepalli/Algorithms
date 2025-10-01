@@ -96,7 +96,7 @@ public class SegmetTree {
     private int rangeQueryHelper(SegmentTreeNode node, int left, int right) {
 
         // completely out of bounds
-        if(right < node.l || left > node.r) return 0;
+        if(right < node.l || node.r < left) return 0;
 
         // completely in-bounds
         if(left <= node.l && node.r <= right) return node.sum;
@@ -111,15 +111,34 @@ public class SegmetTree {
     }
     private void rangeUpdateHelper(SegmentTreeNode node, int left, int right, int value) {
 
-        if (right < node.l || left > node.r) return;
+        if(node.lazy != 0) {
+            node.sum += (node.r - node.l + 1) * node.lazy;
 
+            if(node.l != node.r) {
+                node.leftChild.lazy += node.lazy;
+                node.rightChild.lazy += node.lazy;
+            }
+
+            node.lazy = 0;
+        }
+
+        // completely out of bounds
+        if(right < node.l || node.r < left) return;
+
+        // completely in-bounds
         if(left <= node.l && node.r <= right) {
 
-            // sum of all the elements in the array between these indices
             node.sum += (node.r - node.l + 1) * value;
+
+            if(node.l != node.r) {
+                node.leftChild.lazy += value;
+                node.rightChild.lazy += value;
+            }
+
             return;
         }
 
+        // partially in-bounds -> find the child in completely in-bounds
         rangeUpdateHelper(node.leftChild, left, right, value);
         rangeUpdateHelper(node.rightChild, left, right, value);
 
@@ -166,7 +185,9 @@ public class SegmetTree {
         tree.build(arr);
         tree.printSegmentTreeData();
         System.out.println(tree.rangeQuery(1, 6));
-        tree.pointUpdate(0, 10);
+        tree.rangeUpdate(0, 3, 10);
+        tree.rangeUpdate(0, 0, 2);
+        tree.rangeUpdate(2,    2, 0);
         tree.printSegmentTreeData();
 
     }
