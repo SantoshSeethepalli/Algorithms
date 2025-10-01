@@ -1,4 +1,4 @@
-package com.GFG_MDQs.SegmentTree;
+package com.SegmentTree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

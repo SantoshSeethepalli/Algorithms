@@ -1,4 +1,4 @@
-package com.GFG_MDQs.SegmentTree;
+package com.SegmentTree;
 
 public class SegmentTreeNode {
 
