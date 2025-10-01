@@ -5,16 +5,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class SegmetTree {
+public class SegmentTree {
 
     SegmentTreeNode root;
     List<List<Integer>> levelOrderTreeData;
 
-    public SegmetTree() {
+    public SegmentTree() {
 
         this.levelOrderTreeData = new ArrayList<>();
     }
-    public SegmetTree(int[] arr) {
+    public SegmentTree(int[] arr) {
 
         build(arr);
         this.levelOrderTreeData = new ArrayList<>();
@@ -71,6 +71,7 @@ public class SegmetTree {
 
                 SegmentTreeNode node = q.poll();
 
+                if(node == null) break;
                 if(node.leftChild != null) q.add(node.leftChild);
                 if(node.rightChild != null) q.add(node.rightChild);
 
@@ -180,9 +181,8 @@ public class SegmetTree {
 
         int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7};
 
-        SegmetTree tree = new SegmetTree();
+        SegmentTree tree = new SegmentTree(arr);
 
-        tree.build(arr);
         tree.printSegmentTreeData();
         System.out.println(tree.rangeQuery(1, 6));
         tree.rangeUpdate(0, 3, 10);
