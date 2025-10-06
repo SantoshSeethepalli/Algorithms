@@ -1,7 +1,5 @@
 package com.Sortings;
 
-import java.util.Arrays;
-
 public class HeapSort {
 
     // The current code implement's the heap sort and sorts the code in ascending order.
