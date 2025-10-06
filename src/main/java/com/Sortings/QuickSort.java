@@ -68,6 +68,7 @@ public class QuickSort {
         int pivot = arr[right];
         int i = left - 1;
 
+        // gather the small from j-pointer and swap it with i-pointer
         for(int j = left; j < right; j++) {
 //            uncomment this for sorting in decreasing order
 //            if(arr[j] <= pivot) continue;
