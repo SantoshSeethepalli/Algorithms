@@ -16,6 +16,7 @@
 - Dual-Pivot Quick Sort
 - Heap Sort
 - 3-Way Quick Sort
+- Binary Insertion Sort
 
 ### Yet to Implement
 - TimSort

@@ -1,5 +1,22 @@
 # Notepad
 
+Merge Sort, Quick Sort, and Heap Sort are comparison-based sorting algorithms that achieve an asymptotic time complexity of O(n log n) (Big-O notation).
+
+    Quick Sort:
+    Has a large constant factor for small input sizes.
+    
+    Merge Sort:
+    Extra space, which can be significant for big inputs.
+    
+    Heap Sort:
+    Has a large constant factor and poor locality of reference.
+
+Notes:
+
+Constant factor is expressed as C * n log(n) + K, where C is the constant factor.
+
+Poor locality of reference: The algorithm cannot predict which element will be accessed next, making it harder for the operating system to optimize memory access.
+
 <details>
 <summary>Time & Space Complexities</summary>
 
@@ -35,6 +52,7 @@
 > Nearly sorted small arrays.
 
 > **Insertion Sort**  
+> The best for small arrays.
 > Small or nearly sorted arrays.
 
 > **3-Way Quick Sort**  
