@@ -1,8 +1,8 @@
 # Sorting Algorithms
 
 > **Total Algorithms:** 13  
-> **Implemented:** 5  
-> **Yet to Implement:** 8
+> **Implemented:** 7
+> **Yet to Implement:** 6
 
 <details>
 <summary><strong>Algorithm List</strong> (click to expand)</summary>
@@ -14,9 +14,9 @@
 - Quick Sort
 - Merge Sort
 - Dual-Pivot Quick Sort
+- Heap Sort
 
 ### Yet to Implement
-- Heap Sort
 - TimSort
 - 3-Way Quick Sort
 - IntroSort
