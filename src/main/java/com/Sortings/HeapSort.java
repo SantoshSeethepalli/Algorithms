@@ -84,12 +84,4 @@ public class HeapSort {
             maxHeapify(arr, idx, 0);
         }
     }
-
-    public static void main(String[] args) {
-
-        int[] arr = new int[]{2, 3, 1, 4, 4, 5, 6};
-
-        new HeapSort().heapSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
 }
