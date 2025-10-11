@@ -1,7 +1,7 @@
 # Sorting Algorithms
 
-> **Total Algorithms:** 13  
-> **Implemented:** 8
+> **Total Algorithms:** 14  
+> **Implemented:** 9
 > **Yet to Implement:** 5
 
 <details>
