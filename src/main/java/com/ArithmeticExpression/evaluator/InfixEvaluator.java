@@ -95,10 +95,4 @@ public class InfixEvaluator {
 
         return numbersStack.pop();
     }
-
-    public static void main(String[] args) {
-        String[] arr = {"100", "+", "200", "/", "2", "*", "5", "+", "-7"};
-
-        System.out.println(new InfixEvaluator().evaluateInfix(arr));
-    }
 }
