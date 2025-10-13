@@ -4,14 +4,19 @@ import java.util.*;
 
 public class RadixSort {
 
-    // we are performing LSB radix sort, means the right to left the comparision is being done.
+    // we are performing LSB radix sort, means the right to left the comparison is being done.
 
-    private void helperCountingSort(List<Integer> arr, int exp) {
+    // Best one: https://www.youtube.com/watch?v=ujb2CIWE8zY
+    // Good to refer: https://www.youtube.com/watch?v=GhP5WbE4GYo&t=1s
+
+    private void helperCountingSort(List<Integer> arr, int digitPlaceInReverseOrder) {
 
         int[] countArray = new int[10];
 
         // perform counting
-        for(int value : arr) countArray[(value / exp) % 10]++;
+        for(int value : arr) countArray[(value / digitPlaceInReverseOrder) % 10]++;
+
+        // compute prefixSum
         for(int i = 1; i < 10; i++) countArray[i] += countArray[i  - 1];
 
         int[] output = new int[arr.size()];
@@ -19,64 +24,61 @@ public class RadixSort {
         for(int i = arr.size() - 1; i >= 0; i--) {
 
             int current = arr.get(i);
-            int positionInArray = countArray[(current / exp) % 10] - 1;
+            int unitsPlaceValue = (current / digitPlaceInReverseOrder) % 10;
+
+            countArray[unitsPlaceValue]--;
+            int positionInArray = countArray[unitsPlaceValue];
 
             output[positionInArray] = current;
-            countArray[((current / exp) % 10)]--;
         }
 
         arr.clear();
         for(int value : output) arr.add(value);
     }
 
-    private void radixSort(List<Integer> arr, int max) {
+    private void radixSort(List<Integer> arr, int maxElement) {
 
-        for(int exp = 1; (max / exp) > 0; exp *= 10) {
+        // this loop will run for maximum of max-length digit size.
+        for(int digitPlaceInReverseOrder = 1; (maxElement / digitPlaceInReverseOrder) > 0; digitPlaceInReverseOrder *= 10) {
 
-            helperCountingSort(arr, exp);
+            helperCountingSort(arr, digitPlaceInReverseOrder);
         }
     }
 
     public void sort(int[] arr) {
 
-        List<Integer> negativeIntegers = new ArrayList<>();
-        List<Integer> positiveIntegers = new ArrayList<>();
+        List<Integer> negativeValues = new ArrayList<>();
+        List<Integer> positiveValues = new ArrayList<>();
 
+        // separate positive and negative integers(absolute values)
         for(int num : arr) {
 
             if(num < 0) {
 
-                negativeIntegers.add(num);
+                negativeValues.add(-num);
             } else {
 
-                positiveIntegers.add(num);
+                positiveValues.add(num);
             }
         }
 
         // Handle positives
-        int maxPositive = positiveIntegers.isEmpty() ? 0 : Collections.max(positiveIntegers);
-        radixSort(positiveIntegers, maxPositive);
+        int maxPositive = positiveValues.isEmpty() ? 0 : Collections.max(positiveValues);
+        radixSort(positiveValues, maxPositive);
 
-        // Handle negatives
-        List<Integer> absNegatives = new ArrayList<>();
-        for(int num : negativeIntegers) absNegatives.add(-num);
+        int maxNegative = negativeValues.isEmpty() ? 0 : Collections.max(negativeValues);
+        radixSort(negativeValues, maxNegative);
 
-        int maxNegative = absNegatives.isEmpty() ? 0 : Collections.max(absNegatives);
-        radixSort(absNegatives, maxNegative);
-
-        // restore sign and order
-        Collections.reverse(absNegatives);
-        for(int i = 0; i < absNegatives.size(); i++) {
-
-            absNegatives.set(i, -absNegatives.get(i));
-        }
+        // restore sign and order as we stored absolute values in negativeValues
+        Collections.reverse(negativeValues);
+        negativeValues.replaceAll(integer -> -integer);
 
         // Merge negatives and positives
-        absNegatives.addAll(positiveIntegers);
+        negativeValues.addAll(positiveValues);
 
         for(int i = 0; i < arr.length; i++) {
 
-            arr[i] = absNegatives.get(i);
+            arr[i] = negativeValues.get(i);
         }
     }
 
