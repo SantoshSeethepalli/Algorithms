@@ -64,7 +64,7 @@ public class HeapSort {
         }
     }
 
-    private void heapSort(int[] arr)  {
+    public void sort(int[] arr)  {
 
         int n = arr.length;
 

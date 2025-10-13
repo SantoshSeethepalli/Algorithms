@@ -63,7 +63,7 @@ public class QuickSort {
         sort(arr, pivotIdx + 1, right);
     }
 
-    private int partition(int[] arr, int left, int right) {
+    public int partition(int[] arr, int left, int right) {
 
         int pivot = arr[right];
         int i = left - 1;
