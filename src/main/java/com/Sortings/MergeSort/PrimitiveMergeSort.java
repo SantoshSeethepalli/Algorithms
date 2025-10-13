@@ -1,8 +1,8 @@
-package com.Sortings;
+package com.Sortings.MergeSort;
 
 import java.util.*;
 
-public class MergeSort {
+public class PrimitiveMergeSort {
 
     // https://www.youtube.com/watch?v=4VqmGXwpLqc
 
@@ -35,7 +35,7 @@ public class MergeSort {
         merge(arr, left, mid, right);
     }
 
-    private void merge(int[] arr, int left, int mid, int right) {
+    public void merge(int[] arr, int left, int mid, int right) {
 
         // copy elements into the sub array's
         List<Integer> leftSubArray = new ArrayList<>();
