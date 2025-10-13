@@ -47,6 +47,13 @@ public class RadixSort {
 
     public void sort(int[] arr) {
 
+        /*
+             we will copy the negative values(further considered only absolute-values) into one array and positive values into another.
+             Then apply radix sort on each of the subArrays
+             restore the negative values sign and order
+             Finally combine both thr sub arrays
+         */
+
         List<Integer> negativeValues = new ArrayList<>();
         List<Integer> positiveValues = new ArrayList<>();
 
