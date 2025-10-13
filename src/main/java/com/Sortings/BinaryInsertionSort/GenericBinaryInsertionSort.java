@@ -1,5 +1,7 @@
 package com.Sortings.BinaryInsertionSort;
 
+import java.util.*;
+
 public class GenericBinaryInsertionSort<T extends Comparable<? super T>> {
 
     public void sort(T[] arr) {
@@ -47,6 +49,46 @@ public class GenericBinaryInsertionSort<T extends Comparable<? super T>> {
         for(int idx = rightEnd; idx >= leftEnd; idx--) {
 
             arr[idx + 1] = arr[idx];
+        }
+    }
+
+
+    // methods for sorting List<T>:
+
+    public void sort(List<T> arr) {
+        binaryInsertionSort(arr, 0, arr.size() - 1);
+    }
+
+    private void binaryInsertionSort(List<T> arr, int left, int right) {
+
+        for(int idx = left + 1; idx <= right; idx++) {
+
+            T val = arr.get(idx);
+            int insertionIdx = findLowerBound(arr, left, idx - 1, val);
+            moveArrayOneStepForward(arr, insertionIdx, idx - 1);
+            arr.set(insertionIdx, val);
+        }
+    }
+
+    private int findLowerBound(List<T> arr, int left, int right, T target) {
+
+        if(left > right) return left;
+        int mid = (left  + right) / 2;
+
+        if(arr.get(mid).compareTo(target) >= 0) {
+
+            return findLowerBound(arr, left, mid - 1, target);
+        } else {
+
+            return findLowerBound(arr, mid + 1, right, target);
+        }
+    }
+
+    private void moveArrayOneStepForward(List<T> arr, int leftEnd, int rightEnd) {
+
+        for(int idx = rightEnd; idx >= leftEnd; idx--) {
+
+            arr.set(idx + 1, arr.get(idx));
         }
     }
 }

@@ -1,8 +1,8 @@
-package com.Sortings;
+package com.Sortings.RadixSort;
 
 import java.util.*;
 
-public class RadixSort {
+public class RadixSort_using_CountingSort {
 
     // we are performing LSB radix sort, means the right to left the comparison is being done.
 
@@ -93,7 +93,7 @@ public class RadixSort {
 
         int[] arr = {132, 352, 123, 425, -112};
 
-        new RadixSort().sort(arr);
+        new RadixSort_using_CountingSort().sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 }
