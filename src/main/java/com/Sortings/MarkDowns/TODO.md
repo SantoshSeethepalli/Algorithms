@@ -1,11 +1,9 @@
 # Sorting Algorithms
 
 > **Total Algorithms:** 14  
-> **Implemented:** 13
-> **Yet to Implement:** 1
+> **Implemented:** 14
+> **Yet to Implement:** 
 
-<details>
-<summary><strong>Algorithm List</strong> (click to expand)</summary>
 
 ### Implemented
 - Selection Sort
@@ -21,8 +19,4 @@
 - Counting Sort
 - Radix Sort
 - Bucket Sort
-
-### Yet to Implement
 - IntroSort
-
-</details>
