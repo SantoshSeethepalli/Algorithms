@@ -1,4 +1,4 @@
-package com.GFG_MDQs.Arrays;
+package com.DSA.GFG_MDQs.Arrays;
 
 public class q3 {
 
