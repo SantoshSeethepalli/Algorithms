@@ -1,5 +1,7 @@
 package com.DSA.TUF.Arrays.module_3.PascalsTriangle;
 
+import java.util.Arrays;
+
 public class PascalsTraingle_Two {
 
     public int[] pascalTriangleII(int r) {
